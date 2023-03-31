@@ -902,6 +902,239 @@ Quelle: [New York Times](https://www.nytimes.com/interactive/2022/02/01/science/
 ![](img/bsp_wages.png){fig-align="center"}
 
 
+# Let's start with {ggplot}
+
+::: {.absolute top="90%" left="30%" width="400px" height="336px"}
+![](img/avatar_hoodie.png)
+:::
+
+::: footer
+:::
+
+## The grammar of {ggplot} {.smaller}
+
+::: {.tbl-classic .tbl-larger}
+| Component | Function | Explanation |
+|-----------|----------|-------------|
+| Data | ggplot(data) | The raw data that you want to visualise. |
+| Aesthetics | aes() | Aesthetic mappings between variables and visual properties. |
+| Geometries | geom_*() | The geometric shapes representing the data. |
+| Statistics | stat_*() | The statistical transformations applied to the data. |
+| Scales | scale_*() | Maps between the data and the aesthetic dimensions. |
+| Coordinate System	| coord_*() | Maps data into the plane of the data rectangle. |
+| Facets | facet_*() | The arrangement of the data into a grid of plots. |
+| Visual Themes | theme() | The overall visual defaults of a plot. |
+: {tbl-colwidths="[25,20,55]"}
+:::
+
+::: {.aside}
+Source: @scherer:2022
+:::
+
+## Selected geometries in {ggplot} {.smaller}
+
+::: {.tbl-classic .tbl-smaller}
+|  | Geometry | Explanation |
+|--|----------|-------------|
+| ![](img/geom_ribbon.png){height="35" style="vertical-align:middle;padding:0;margin:0;"} | area, ribbon | An area plot is the continuous analogue of a stacked bar chart. |
+| ![](img/geom_bar.png){height="35" style="vertical-align:middle;padding:0;margin:0;"} | bar, col | Bar charts may be proportional (bar) or with absolute values (col). |
+| ![](img/geom_boxplot.png){height="35" style="vertical-align:middle;padding:0;margin:0;"} | boxplot | The boxplot compactly displays the distribution of a continuous variable.|
+| ![](img/geom_density.png){height="35" style="vertical-align:middle;padding:0;margin:0;"} | density, histogram | Kernel density plot, which is a smoothed version of the histogram. |
+| ![](img/geom_abline.png){height="35" style="vertical-align:middle;padding:0;margin:0;"} | hline, vline, abline | Draws a horizontal or vertical line with an intercept or a line with a slope. |
+| ![](img/geom_line.png){height="35" style="vertical-align:middle;padding:0;margin:0;"} | line, path | Line between observations in order of variable (line) or appearance (path) |
+| ![](img/geom_errorbar.png){height="35" style="vertical-align:middle;padding:0;margin:0;"} | linerange, errorbar | Various ways of representing a vertical interval defined by x, ymin and ymax. |
+| ![](img/geom_point.png){height="35" style="vertical-align:middle;padding:0;margin:0;"} | point, jitter | The point geom is used to create scatterplots and jitter avoids overplotting. |
+| ![](img/geom_curve.png){height="35" style="vertical-align:middle;padding:0;margin:0;"} | segment, curve | Draws a straight or curved line between points (x,y) and (xend, yend). |
+| ![](img/geom_smooth.png){height="35" style="vertical-align:middle;padding:0;margin:0;"} | smooth | Smoothed line with standard error bounds across a scatterplot. |
+| ![](img/geom_violin.png){height="35" style="vertical-align:middle;padding:0;margin:0;"} | violin | A violin plot is a compact display of a continuous distribution. |
+
+: {tbl-colwidths="[5,22,73]"}
+:::
+
+
+## Additional geometries {.smaller}
+
+::: {.columns .center style="font-size:1.3rem;"}
+::: {.column width="33%"}
+[ggstream::geom_stream()]{.secfont}
+![](img/geom_stream.png){height="200"}
+:::
+::: {.column width="33%" .fragment}
+[waffle::geom_waffle()]{.secfont}
+![](img/geom_waffle.png){height="200"}
+:::
+::: {.column width="33%" .fragment}
+[ggchicklet::geom_chicklet()]{.secfont}
+![](img/geom_chicklet.png){height="200"}
+:::
+:::
+
+::: {.columns .center style="font-size:1.3rem;"}
+::: {.column width="33%" .fragment}
+[ggridges::geom_density_ridges()]{.secfont}
+![](img/geom_ridges.png){height="200"}
+:::
+::: {.column width="33%" .fragment}
+[ggsankey::geom_sankey()]{.secfont}
+![](img/geom_sankey.png){height="200"}
+:::
+::: {.column width="33%" .fragment}
+[ggbump::geom_bump()]{.secfont}
+![](img/geom_bump.png){height="200"}
+:::
+:::
+
+## Geometries and aesthetic mapping {.medium}
+
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "1|2|3|4"
+data + 
+  ggplot(aes(x = year, y = value, color = category)) +
+  geom_point(alpha = 0.5, shape = 21) +
+  scale_color_manual(values = c("red", "blue", "yellow"))
+```
+
+<br>
+
+::: {.tbl-classic .tbl-smaller}
+| Geometries | Aesthetics | Scales | Dimensions |
+|------------|------------|--------|------------|
+| points | positions (x, y) | scale_x_\*(), scale_y_\*() | position (continuous, discrete, reverse, log10, sqrt, date) |
+| lines | colors (color, fill) | scale_color_\*(), <br> scale_fill_\*() | colors (continuous, discrete, manual, gradient, gradient2, brewer) |
+| polygons | shapes (shape, linetype) | scale_shape_\*(), scale_linetype_\*() | shapes (continuous, discrete, manual, ordinal) |
+| text | size (size) | scale_size_\*(), scale_radius_\*() | sizes (continuous, discrete, manual, ordinal, area, date) |
+| boxplot | transparency (alpha) | scale_alpha_\*() | transparency (continuous, discrete, manual, ordinal, date) |
+| ...many more! | groupings (group) | | |
+: {tbl-colwidths="[15,20,25,40]"}
+:::
+
+::: {.aside}
+Source: @scherer:2022
+:::
+
+## First steps {.smaller}
+
+```{r}
+#| label: load-packages
+#| include: false
+#| purl: false
+library(tidyverse)
+library(lubridate)
+library(scales)
+library(colorspace)
+library(palmerpenguins)
+data <- penguins
+```
+
+```{r}
+#| label: facet-setup
+#| output-location: column
+data |> ggplot(aes(x = bill_length_mm, 
+                  y = bill_depth_mm)) +
+  geom_point(size = 1.5, alpha = 0.5)
+```
+
+## Colors {.smaller}
+
+```{r}
+#| label: colors
+#| output-location: column
+#| code-line-numbers: "3,5"
+data |> ggplot(aes(x = bill_length_mm, 
+                  y = bill_depth_mm, 
+                  color = species)) +
+  geom_point(size = 1.5, alpha = 0.5) +
+  theme_minimal()
+```
+
+## Scales {.smaller}
+
+```{r}
+#| label: scales
+#| output-location: column
+#| code-line-numbers: "5,6,7"
+data |> ggplot(aes(x = bill_length_mm, 
+                  y = bill_depth_mm, 
+                  color = species)) +
+  geom_point(size = 1.5, alpha = 0.5) +
+  scale_color_manual(values = MetBrewer::met.brewer("Lakota")) +
+  scale_x_continuous(limits = c(30,60), breaks = seq(30,60,10)) +
+  scale_y_continuous(limits = c(12,21), breaks = seq(12,21,3)) +
+  theme_minimal()
+```
+
+## Labels {.smaller}
+
+```{r}
+#| label: labels
+#| output-location: column
+#| code-line-numbers: "8,9,10"
+data |> ggplot(aes(x = bill_length_mm, 
+                  y = bill_depth_mm, 
+                  color = species)) +
+  geom_point(size = 1.5, alpha = 0.5) +
+  scale_color_manual(values = MetBrewer::met.brewer("Lakota")) +
+  scale_x_continuous(limits = c(30,60), breaks = seq(30,60,10)) +
+  scale_y_continuous(limits = c(12,21), breaks = seq(12,21,3)) +
+  labs(x = "Bill length (in mm)", y = "Bill depth (in mm)",
+      title = "Penguins are awesome",
+      subtitle = "Depth and length of bills") +
+  theme_minimal()
+```
+
+## Annotation rather than legend {.smaller}
+
+```{r}
+#| label: annotation
+#| output-location: column
+#| code-line-numbers: "8,9,10,15"
+data |> ggplot(aes(x = bill_length_mm, 
+                  y = bill_depth_mm, 
+                  color = species)) +
+  geom_point(size = 1.5, alpha = 0.5) +
+  scale_color_manual(values = MetBrewer::met.brewer("Lakota")) +
+  scale_x_continuous(limits = c(30,60), breaks = seq(30,60,10)) +
+  scale_y_continuous(limits = c(12,21), breaks = seq(12,21,3)) +
+  annotate("text", x = c(34.7, 55.7, 50.7), y = c(20.7, 19, 13.6), 
+  color = MetBrewer::met.brewer("Lakota")[1:3], 
+  label = c("Adélie","Chinstrap","Gentoo"), fontface = "bold", size = 4) +
+  labs(x = "Bill length (in mm)", y = "Bill depth (in mm)",
+      title = "Penguins are awesome",
+      subtitle = "Depth and length of bills") +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+## Themes {.smaller}
+
+```{r}
+#| label: addthemes
+#| output-location: column
+#| code-line-numbers: "16,17,18,19"
+data |> ggplot(aes(x = bill_length_mm, 
+                  y = bill_depth_mm, 
+                  color = species)) +
+  geom_point(size = 1.5, alpha = 0.5) +
+  scale_color_manual(values = MetBrewer::met.brewer("Lakota")) +
+  scale_x_continuous(limits = c(30,60), breaks = seq(30,60,10)) +
+  scale_y_continuous(limits = c(12,21), breaks = seq(12,21,3)) +
+  annotate("text", x = c(34.7, 55.7, 50.7), y = c(20.7, 19, 13.6), 
+  color = MetBrewer::met.brewer("Lakota")[1:3], 
+  label = c("Adélie","Chinstrap","Gentoo"), fontface = "bold", size = 4) +
+  labs(x = "Bill length (in mm)", y = "Bill depth (in mm)",
+      title = "Penguins are awesome",
+      subtitle = "Depth and length of bills") +
+  theme_minimal() +
+  theme(legend.position = "none",
+  plot.title.position = "plot",
+  plot.title = element_text(size = 16, face="bold"),
+  plot.subtitle = element_text(size = 13),
+  panel.grid.minor = element_blank())
+```
+
+
 ## Weiterführende Literatur 
 
 ::: {.tbl-larger .recommended-lit}
