@@ -1,0 +1,36 @@
+project:
+  type: website
+  
+format:
+  html:
+    theme: 
+      - litera
+      - dataviz.scss
+
+bibliography: data/dataviz.bib
+csl: data/dataviz.csl
+
+website:
+  title: "Schöner Visualisieren"
+  site-url: "https://mschnetzer.github.io/intro-to-dataviz/"
+  
+  navbar:
+    pinned: true
+    background: light
+    foreground: "#5d8198"
+    collapse: true
+    right:
+      - href: index.qmd
+        text: About
+      - href: syllabus.qmd
+        text: Syllabus
+      - href: schedule.qmd
+        text: Schedule
+      - href: visualization.qmd
+        text: Chart & Report
+        
+  page-footer:
+    right: |
+      {{< fa brands creative-commons >}} {{< var course.copyright_year >}} by {{< var author >}}
+    left: |
+      Made with {{< fa heart >}} and {{< fa brands r-project >}} [Quarto](https://quarto.org/)
