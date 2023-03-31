@@ -12,7 +12,7 @@ csl: data/dataviz.csl
 
 website:
   title: "Schöner Visualisieren"
-  site-url: "https://mschnetzer.github.io/intro-to-dataviz/"
+  site-url: "https://mschnetzer.github.io/dataviz-momentum-2023/"
   
   navbar:
     pinned: true

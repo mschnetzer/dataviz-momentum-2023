@@ -12,11 +12,11 @@ instructor:
 course:
   title: Workshop Datenvisualisierung
   subtitle: "Schöner Visualisieren"
-  date: "31. März 2023"
-  location: "Österreichisches Patentamt"
+  date: "5. April 2023"
+  location: "Momentum Institut"
   icon: fa-chart-column
   icon-bg: fa-comment
-  url: "https://mschnetzer.github.io/intro-to-dataviz"
+  url: "https://mschnetzer.github.io/dataviz-momentum-2023"
   copyright_year: "2023"
 
 university:

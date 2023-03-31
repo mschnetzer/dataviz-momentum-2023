@@ -69,6 +69,7 @@ Was sind die Ziele des Workshops?
 - Kenntnis der wichtigsten [Prinzipien der Datenvisualisierung]{.marker-hl}
 - [Inspiration]{.marker-hl} aus einer Vielzahl unterschiedlicher Grafiktypen
 - Erfahrungen aus [best practice Beispielen]{.marker-hl}
+- Kurze [Einführung in ggplot]{.marker-hl} und Code-Beispiele
 
 ## Was sind eure Erwartungen?
 
@@ -812,8 +813,6 @@ Quelle: [Datawrapper](https://blog.datawrapper.de/fonts-for-data-visualization/)
 :::
 
 ## Grafikbeschriftung {.medium}
-
-Hier noch Titel der Grafik hinzufügen!
 
 ![](img/labels_nyt.png)
 
