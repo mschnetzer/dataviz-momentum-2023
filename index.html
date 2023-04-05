@@ -1212,6 +1212,75 @@ Matthias Schnetzer
 <aside><div>
 <p>Source: <span class="citation" data-cites="scherer:2022">Scherer (<a href="#/verwendete-literatur" role="doc-biblioref" onclick="">2022</a>)</span></p>
 </div></aside></section>
+<section id="geometries-and-aesthetic-mapping" class="slide level2 medium">
+<h2>Geometries and aesthetic mapping</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" data-code-line-numbers="1|2|3|4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>data <span class="sc">+</span> </span>
+<span id="cb1-2"><a href="#cb1-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> value, <span class="at">color =</span> category)) <span class="sc">+</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"yellow"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+<div class="tbl-classic tbl-smaller">
+<table>
+<colgroup>
+<col style="width: 15%">
+<col style="width: 20%">
+<col style="width: 25%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Geometries</th>
+<th>Aesthetics</th>
+<th>Scales</th>
+<th>Dimensions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>points</td>
+<td>positions (x, y)</td>
+<td>scale_x_*(), scale_y_*()</td>
+<td>position (continuous, discrete, reverse, log10, sqrt, date)</td>
+</tr>
+<tr class="even">
+<td>lines</td>
+<td>colors (color, fill)</td>
+<td>scale_color_*(), <br> scale_fill_*()</td>
+<td>colors (continuous, discrete, manual, gradient, gradient2, brewer)</td>
+</tr>
+<tr class="odd">
+<td>polygons</td>
+<td>shapes (shape, linetype)</td>
+<td>scale_shape_*(), scale_linetype_*()</td>
+<td>shapes (continuous, discrete, manual, ordinal)</td>
+</tr>
+<tr class="even">
+<td>text</td>
+<td>size (size)</td>
+<td>scale_size_*(), scale_radius_*()</td>
+<td>sizes (continuous, discrete, manual, ordinal, area, date)</td>
+</tr>
+<tr class="odd">
+<td>boxplot</td>
+<td>transparency (alpha)</td>
+<td>scale_alpha_*()</td>
+<td>transparency (continuous, discrete, manual, ordinal, date)</td>
+</tr>
+<tr class="even">
+<td>…many more!</td>
+<td>groupings (group)</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<aside><div>
+<p>Source: <span class="citation" data-cites="scherer:2022">Scherer (<a href="#/verwendete-literatur" role="doc-biblioref" onclick="">2022</a>)</span></p>
+</div></aside></section>
 <section id="selected-geometries-in-ggplot" class="slide level2 smaller">
 <h2>Selected geometries in {ggplot}</h2>
 <div class="tbl-classic tbl-smaller">
@@ -1309,75 +1378,6 @@ Matthias Schnetzer
 </div>
 </div>
 </section>
-<section id="geometries-and-aesthetic-mapping" class="slide level2 medium">
-<h2>Geometries and aesthetic mapping</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1" data-code-line-numbers="1|2|3|4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>data <span class="sc">+</span> </span>
-<span id="cb1-2"><a href="#cb1-2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> value, <span class="at">color =</span> category)) <span class="sc">+</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">shape =</span> <span class="dv">21</span>) <span class="sc">+</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"yellow"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><br></p>
-<div class="tbl-classic tbl-smaller">
-<table>
-<colgroup>
-<col style="width: 15%">
-<col style="width: 20%">
-<col style="width: 25%">
-<col style="width: 40%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Geometries</th>
-<th>Aesthetics</th>
-<th>Scales</th>
-<th>Dimensions</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>points</td>
-<td>positions (x, y)</td>
-<td>scale_x_*(), scale_y_*()</td>
-<td>position (continuous, discrete, reverse, log10, sqrt, date)</td>
-</tr>
-<tr class="even">
-<td>lines</td>
-<td>colors (color, fill)</td>
-<td>scale_color_*(), <br> scale_fill_*()</td>
-<td>colors (continuous, discrete, manual, gradient, gradient2, brewer)</td>
-</tr>
-<tr class="odd">
-<td>polygons</td>
-<td>shapes (shape, linetype)</td>
-<td>scale_shape_*(), scale_linetype_*()</td>
-<td>shapes (continuous, discrete, manual, ordinal)</td>
-</tr>
-<tr class="even">
-<td>text</td>
-<td>size (size)</td>
-<td>scale_size_*(), scale_radius_*()</td>
-<td>sizes (continuous, discrete, manual, ordinal, area, date)</td>
-</tr>
-<tr class="odd">
-<td>boxplot</td>
-<td>transparency (alpha)</td>
-<td>scale_alpha_*()</td>
-<td>transparency (continuous, discrete, manual, ordinal, date)</td>
-</tr>
-<tr class="even">
-<td>…many more!</td>
-<td>groupings (group)</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-
-<aside><div>
-<p>Source: <span class="citation" data-cites="scherer:2022">Scherer (<a href="#/verwendete-literatur" role="doc-biblioref" onclick="">2022</a>)</span></p>
-</div></aside></section>
 <section id="first-steps" class="slide level2 smaller">
 <h2>First steps</h2>
 <div class="cell columns column-output-location">
@@ -1549,6 +1549,28 @@ Matthias Schnetzer
 </tr>
 </tbody>
 </table>
+</div>
+</section></section>
+<section>
+<section id="zeit-für-eine-r-session" class="title-slide slide level1 center">
+<h1>Zeit für eine R-Session</h1>
+<div class="columns" style="font-size:2.5rem;color:'white';align:center;">
+<div class="column">
+<p><a href="data/workshop.R"><i class="fa-solid fa-code"></i></a></p>
+<p><span class="secfont">R-Code</span></p>
+</div><div class="column">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/avatar_laptop.png" height="250"></p>
+</figure>
+</div>
+</div><div class="column">
+<p><a href="data/gdp.RData"><i class="fa-solid fa-file-arrow-down"></i></a></p>
+<p><span class="secfont">Daten</span></p>
+</div>
+</div>
+<div class="footer">
+
 </div>
 </section>
 <section id="verwendete-literatur" class="slide level2 bibstyle smaller scrollable">

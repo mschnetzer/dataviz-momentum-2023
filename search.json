@@ -455,6 +455,13 @@
     "text": "The grammar of {ggplot}\n\n\n\n\n\n\n\n\n\nComponent\nFunction\nExplanation\n\n\n\n\nData\nggplot(data)\nThe raw data that you want to visualise.\n\n\nAesthetics\naes()\nAesthetic mappings between variables and visual properties.\n\n\nGeometries\ngeom_*()\nThe geometric shapes representing the data.\n\n\nStatistics\nstat_*()\nThe statistical transformations applied to the data.\n\n\nScales\nscale_*()\nMaps between the data and the aesthetic dimensions.\n\n\nCoordinate System\ncoord_*()\nMaps data into the plane of the data rectangle.\n\n\nFacets\nfacet_*()\nThe arrangement of the data into a grid of plots.\n\n\nVisual Themes\ntheme()\nThe overall visual defaults of a plot.\n\n\n\n\n\n\nSource: Scherer (2022)"
   },
   {
+    "objectID": "index.html#geometries-and-aesthetic-mapping",
+    "href": "index.html#geometries-and-aesthetic-mapping",
+    "title": "Schöner Visualisieren",
+    "section": "Geometries and aesthetic mapping",
+    "text": "Geometries and aesthetic mapping\n\ndata + \n  ggplot(aes(x = year, y = value, color = category)) +\n  geom_point(alpha = 0.5, shape = 21) +\n  scale_color_manual(values = c(\"red\", \"blue\", \"yellow\"))\n\n\n\n\n\n\n\n\n\n\n\n\nGeometries\nAesthetics\nScales\nDimensions\n\n\n\n\npoints\npositions (x, y)\nscale_x_*(), scale_y_*()\nposition (continuous, discrete, reverse, log10, sqrt, date)\n\n\nlines\ncolors (color, fill)\nscale_color_*(),  scale_fill_*()\ncolors (continuous, discrete, manual, gradient, gradient2, brewer)\n\n\npolygons\nshapes (shape, linetype)\nscale_shape_*(), scale_linetype_*()\nshapes (continuous, discrete, manual, ordinal)\n\n\ntext\nsize (size)\nscale_size_*(), scale_radius_*()\nsizes (continuous, discrete, manual, ordinal, area, date)\n\n\nboxplot\ntransparency (alpha)\nscale_alpha_*()\ntransparency (continuous, discrete, manual, ordinal, date)\n\n\n…many more!\ngroupings (group)\n\n\n\n\n\n\n\n\nSource: Scherer (2022)"
+  },
+  {
     "objectID": "index.html#selected-geometries-in-ggplot",
     "href": "index.html#selected-geometries-in-ggplot",
     "title": "Schöner Visualisieren",
@@ -467,13 +474,6 @@
     "title": "Schöner Visualisieren",
     "section": "Additional geometries",
     "text": "Additional geometries\n\n\nggstream::geom_stream() \n\nwaffle::geom_waffle() \n\nggchicklet::geom_chicklet() \n\n\n\n\nggridges::geom_density_ridges() \n\nggsankey::geom_sankey() \n\nggbump::geom_bump()"
-  },
-  {
-    "objectID": "index.html#geometries-and-aesthetic-mapping",
-    "href": "index.html#geometries-and-aesthetic-mapping",
-    "title": "Schöner Visualisieren",
-    "section": "Geometries and aesthetic mapping",
-    "text": "Geometries and aesthetic mapping\n\ndata + \n  ggplot(aes(x = year, y = value, color = category)) +\n  geom_point(alpha = 0.5, shape = 21) +\n  scale_color_manual(values = c(\"red\", \"blue\", \"yellow\"))\n\n\n\n\n\n\n\n\n\n\n\n\nGeometries\nAesthetics\nScales\nDimensions\n\n\n\n\npoints\npositions (x, y)\nscale_x_*(), scale_y_*()\nposition (continuous, discrete, reverse, log10, sqrt, date)\n\n\nlines\ncolors (color, fill)\nscale_color_*(),  scale_fill_*()\ncolors (continuous, discrete, manual, gradient, gradient2, brewer)\n\n\npolygons\nshapes (shape, linetype)\nscale_shape_*(), scale_linetype_*()\nshapes (continuous, discrete, manual, ordinal)\n\n\ntext\nsize (size)\nscale_size_*(), scale_radius_*()\nsizes (continuous, discrete, manual, ordinal, area, date)\n\n\nboxplot\ntransparency (alpha)\nscale_alpha_*()\ntransparency (continuous, discrete, manual, ordinal, date)\n\n\n…many more!\ngroupings (group)\n\n\n\n\n\n\n\n\nSource: Scherer (2022)"
   },
   {
     "objectID": "index.html#first-steps",
